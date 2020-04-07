@@ -11,6 +11,7 @@ const Login = () => {
           Authorization: `Bearer ${token}`
         }
       })
+      .then(data => data.json())
       .then(res => {
         console.log(res, "response")
     })}}, [])
