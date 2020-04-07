@@ -1,6 +1,19 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 const Login = () => {
+
+  useEffect(()=>{
+    const token = localStorage.getItem("token")
+
+    if (token){
+      fetch("http://localhost:8080/users/me", {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
+      .then(res => {
+        console.log(res, "response")
+    })}}, [])
 
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
