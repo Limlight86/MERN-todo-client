@@ -2,7 +2,6 @@ import React, { useState, useContext } from 'react';
 import { AppContext } from "../context/AppContext";
 
 const Login = () => {
-
   const { setUser, setLoggedIn } = useContext(AppContext);
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")

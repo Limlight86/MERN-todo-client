@@ -1,11 +1,18 @@
 import React from 'react';
-import Login from "./pages/Login"
+import { AppContextProvider } from "./context/AppContext";
+import Login from "./components/Login"
+import Signup from './components/Signup'
+import Logout from './components/Logout'
 
 const App = () => {
   return (
     <div>
-      <h1>Mern TODO Front End</h1>
-      <Login />
+      <AppContextProvider>
+        <h1>Mern TODO Front End</h1>
+        <Login/>
+        <Signup/>
+        <Logout/>
+      </AppContextProvider>
     </div>
   );
 }
