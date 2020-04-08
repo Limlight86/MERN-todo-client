@@ -14,11 +14,14 @@ const Login = () => {
       .then(data => data.json())
       .then(res => {
         console.log(res, "response")
+        setUser(res)
+        setLoggedIn(true)
     })}}, [])
 
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [user, setUser] = useState({})
+  const [loggedIn, setLoggedIn] = useState(false)
   
   const logIn = (email, password, e) => {
     e.preventDefault()
@@ -40,9 +43,30 @@ const Login = () => {
         console.log(res, "response")
         const parsedRes = JSON.parse(res)
         setUser(parsedRes.user)
+        setLoggedIn(true)
+        setEmail("")
+        setPassword("")
         localStorage.setItem("token", parsedRes.token );
       })
       .catch(() => console.log('error'))
+  }
+
+  const logOut = () => {
+    const token = localStorage.getItem("token")
+    let myHeaders = {Authorization: `Bearer ${token}`}
+    let requestOptions = {
+      method: 'POST',
+      headers: myHeaders,
+      redirect: 'follow',
+    }
+    fetch("http://localhost:8080/users/logout", requestOptions)
+      .then(data => data.json())
+      .then(res => {
+        console.log(res, "response")
+        localStorage.removeItem("token");
+        setUser({})
+        setLoggedIn(false)
+    })
   }
 
   return(
@@ -67,8 +91,9 @@ const Login = () => {
         />
         <input type="submit" value="Log In"/>
       </form>
+      <button onClick={logOut}>Log Out</button>
       {
-        user.name ? <h1>{user.name}</h1> : null
+        user.name && <h1>{user.name}</h1>
       }
     </div>
   )
