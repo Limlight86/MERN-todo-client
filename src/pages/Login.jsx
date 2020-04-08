@@ -20,6 +20,7 @@ const Login = () => {
 
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
+  const [name, setName] = useState("")
   const [user, setUser] = useState({})
   const [loggedIn, setLoggedIn] = useState(false)
   
@@ -69,6 +70,34 @@ const Login = () => {
     })
   }
 
+  const signUp = (email, password, name, e) => {
+    e.preventDefault()
+    let myHeaders = new Headers()
+    myHeaders.append('Content-Type', 'application/json')
+
+    let raw = JSON.stringify({ email, password, name })
+
+    let requestOptions = {
+      method: 'POST',
+      headers: myHeaders,
+      body: raw,
+      redirect: 'follow',
+    }
+
+    fetch(`http://localhost:8080/users`, requestOptions)
+      .then(response => response.text())
+      .then(res => {
+        console.log(res, "response")
+        const parsedRes = JSON.parse(res)
+        setUser(parsedRes.user)
+        setLoggedIn(true)
+        setEmail("")
+        setPassword("")
+        localStorage.setItem("token", parsedRes.token );
+      })
+      .catch(() => console.log('error'))
+  }
+
   return(
     <div>
       <form onSubmit={e => logIn(email, password, e)}>
@@ -92,6 +121,34 @@ const Login = () => {
         <input type="submit" value="Log In"/>
       </form>
       <button onClick={logOut}>Log Out</button>
+      <form onSubmit={e => signUp(email, password, name, e)}>
+        <h1>Sign Up Below!</h1>
+        <input
+          type="email"
+          name="email"
+          placeholder="Enter email"
+          value={email}
+          onChange={ e => setEmail(e.target.value) }
+          required
+        />
+        <input
+          type="password"
+          name="password"
+          placeholder="Enter password"
+          value={password}
+          onChange={e => setPassword(e.target.value)}
+          required
+        />
+        <input
+          type="name"
+          name="name"
+          placeholder="Enter name"
+          value={name}
+          onChange={e => setName(e.target.value)}
+          required
+        />
+        <input type="submit" value="Sign Up"/>
+      </form>
       {
         user.name && <h1>{user.name}</h1>
       }
