@@ -4,6 +4,7 @@ import Login from "./components/Login"
 import Signup from './components/Signup'
 import Logout from './components/Logout'
 import TasksContainer from './components/TasksContainer'
+import TaskForm from './components/TaskForm'
 
 const App = () => {
   return (
@@ -13,6 +14,7 @@ const App = () => {
         <Login/>
         <Signup/>
         <Logout/>
+        <TaskForm/>
         <TasksContainer/>
       </AppContextProvider>
     </div>

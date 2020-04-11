@@ -15,6 +15,7 @@ const TasksContainer = () => {
               key={task._id}
               description={task.description}
               completed={task.completed}
+              dueDate={task.dueDate}
             />
           )
         })
