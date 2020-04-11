@@ -25,10 +25,10 @@ const Login = () => {
       .then(res => {
         console.log(res, "response")
         setUser(res.user)
+        localStorage.setItem("token", res.token );
         setLoggedIn(true)
         setEmail("")
         setPassword("")
-        localStorage.setItem("token", res.token );
       })
       .catch(() => console.log('error'))
   }

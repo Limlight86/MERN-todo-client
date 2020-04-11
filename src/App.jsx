@@ -3,6 +3,7 @@ import { AppContextProvider } from "./context/AppContext";
 import Login from "./components/Login"
 import Signup from './components/Signup'
 import Logout from './components/Logout'
+import TasksContainer from './components/TasksContainer'
 
 const App = () => {
   return (
@@ -12,6 +13,7 @@ const App = () => {
         <Login/>
         <Signup/>
         <Logout/>
+        <TasksContainer/>
       </AppContextProvider>
     </div>
   );
