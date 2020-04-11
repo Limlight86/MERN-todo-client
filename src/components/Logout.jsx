@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { AppContext } from "../context/AppContext";
 
 const Logout = () => {
-  const { setUser, setLoggedIn } = useContext(AppContext);
+  const { setUser, setLoggedIn, setTasks } = useContext(AppContext);
 
   const logOut = () => {
     const token = localStorage.getItem("token")
@@ -19,6 +19,7 @@ const Logout = () => {
         localStorage.removeItem("token");
         setUser({})
         setLoggedIn(false)
+        setTasks([])
     })
   }
 

@@ -1,12 +1,14 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import axios from 'axios'
+import { AppContext } from "../context/AppContext";
 
 
 const CompleteButton = props => {
+  const { setRefetch } = useContext(AppContext)
 
-  const toggleComplete = () =>{
+  const toggleComplete = async () =>{
     const token = localStorage.getItem("token")
-    axios({
+    await axios({
       method: 'PATCH',
       url: `http://localhost:8080/tasks/${props.id}`,
       headers: {Authorization: `Bearer ${token}`}, 
@@ -14,6 +16,7 @@ const CompleteButton = props => {
         completed: !props.completed
       }
     })
+    setRefetch(true)
   }
 
 return(

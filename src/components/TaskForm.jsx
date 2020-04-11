@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { AppContext } from "../context/AppContext";
 import axios from 'axios'
 import moment from 'moment'
 
 const TaskForm = () => {
+  const { setRefetch } = useContext(AppContext)
+  
   const [taskDescription, setTaskDescription] = useState("")
   const [dueDate, setDueDate] = useState("")
 
@@ -19,6 +22,7 @@ const TaskForm = () => {
         dueDate: dueDate
       }
     })
+    setRefetch(true)
     console.log(taskDescription, dueDate)
     console.log(moment(dueDate).format('MMM Do, YYYY'))
   }
