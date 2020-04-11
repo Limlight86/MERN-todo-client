@@ -7,6 +7,7 @@ const AppContextProvider = ({ children }) => {
   const [user, setUser] = useState({})
   const [loggedIn, setLoggedIn] = useState(false)
   const [tasks, setTasks] = useState([])
+  const [refetch, setRefetch] = useState(false);
 
   const token = localStorage.getItem("token")
 
@@ -15,7 +16,12 @@ const AppContextProvider = ({ children }) => {
     .then(({ data }) => {
       console.log(data)
       setTasks(data)
+      setRefetch(false)
     })}, [token])
+
+    useEffect(()=>{
+      setRefetch(true)
+    }, [])
 
   useEffect(()=>{
     if (token){
@@ -32,9 +38,9 @@ const AppContextProvider = ({ children }) => {
 
     useEffect(()=>{
       if(token){
-        fetchTasks()
+        refetch && fetchTasks()
       }
-    }, [loggedIn, fetchTasks, token])
+    }, [loggedIn, fetchTasks, token, refetch])
 
   return (
     <AppContext.Provider value={{user, setUser, loggedIn, setLoggedIn, tasks}}>
