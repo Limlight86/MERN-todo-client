@@ -43,7 +43,7 @@ const AppContextProvider = ({ children }) => {
     }, [loggedIn, fetchTasks, token, refetch])
 
   return (
-    <AppContext.Provider value={{user, setUser, loggedIn, setLoggedIn, tasks}}>
+    <AppContext.Provider value={{user, setUser, loggedIn, setLoggedIn, tasks, setTasks, setRefetch}}>
       {children}
     </AppContext.Provider>
   );

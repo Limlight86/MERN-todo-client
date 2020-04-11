@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import { AppContext } from "../context/AppContext";
 
 const Login = () => {
-  const { setUser, setLoggedIn } = useContext(AppContext);
+  const { setUser, setLoggedIn, setRefetch } = useContext(AppContext);
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
 
@@ -27,6 +27,7 @@ const Login = () => {
         setUser(res.user)
         localStorage.setItem("token", res.token );
         setLoggedIn(true)
+        setRefetch(true)        
         setEmail("")
         setPassword("")
       })
