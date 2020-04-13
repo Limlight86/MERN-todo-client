@@ -9,10 +9,10 @@ const TaskForm = () => {
   const [taskDescription, setTaskDescription] = useState("")
   const [dueDate, setDueDate] = useState("")
 
-  const addTask = (e) =>{
+  const addTask = async (e) =>{
     e.preventDefault()
     const token = localStorage.getItem("token")
-    axios({
+    await axios({
       method: 'POST',
       url: `http://localhost:8080/tasks`,
       headers: {Authorization: `Bearer ${token}`}, 
