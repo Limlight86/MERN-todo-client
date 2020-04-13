@@ -7,6 +7,7 @@ const AppContextProvider = ({ children }) => {
   const [user, setUser] = useState({})
   const [loggedIn, setLoggedIn] = useState(false)
   const [tasks, setTasks] = useState([])
+  const [displayedTasks, setDisplayedTasks] = useState([])
   const [refetch, setRefetch] = useState(false);
 
   const token = localStorage.getItem("token")
@@ -16,6 +17,7 @@ const AppContextProvider = ({ children }) => {
     .then(({ data }) => {
       console.log(data)
       setTasks(data)
+      setDisplayedTasks(data)
       setRefetch(false)
     })}, [token])
 
@@ -43,7 +45,9 @@ const AppContextProvider = ({ children }) => {
     }, [loggedIn, fetchTasks, token, refetch])
 
   return (
-    <AppContext.Provider value={{user, setUser, loggedIn, setLoggedIn, tasks, setTasks, setRefetch}}>
+    <AppContext.Provider value={
+      {user, setUser, loggedIn, setLoggedIn, tasks, setTasks, setRefetch, displayedTasks, setDisplayedTasks}
+    }>
       {children}
     </AppContext.Provider>
   );

@@ -3,13 +3,13 @@ import { AppContext } from "../context/AppContext";
 import Task from './Task'
 
 const TasksContainer = () => {
-  const { tasks, user } = useContext(AppContext);
+  const { user, displayedTasks } = useContext(AppContext);
 
   return(
     <div>
       <h1>{user.name}'s Tasks</h1>
       {
-        tasks.map(task => {
+        displayedTasks.map(task => {
           return(
             <Task
               key={task._id}
