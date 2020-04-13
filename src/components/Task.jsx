@@ -9,7 +9,7 @@ const Task = props => (
         props.completed ? <strike>{props.description}</strike> : props.description
       }
       <CompleteButton completed={props.completed} id={props.id} />
-      <DeleteTask id={props.id} owner={props.owner} />
+      <DeleteTask id={props.id} />
     </span>
   </div>
 )

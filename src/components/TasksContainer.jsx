@@ -14,7 +14,6 @@ const TasksContainer = () => {
             <Task
               key={task._id}
               id={task._id}
-              owner={task.owner}
               description={task.description}
               completed={task.completed}
               dueDate={task.dueDate}
