@@ -42,7 +42,6 @@ const TaskForm = () => {
           name="due-date"
           value={dueDate}
           onChange={ e => setDueDate(e.target.value) }
-          required
         />
         <input type="submit" value="Add Task"/>
     </form>
