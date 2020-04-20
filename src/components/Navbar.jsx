@@ -15,7 +15,7 @@ const Navbar = () => {
   }
 
   return(
-    <nav >
+    <nav>
       <div  onClick={() => setDisplayedTasks(tasks)}>Todo App</div>
       <div>
         <span  

@@ -6,6 +6,7 @@ import Logout from './components/Logout'
 import TasksContainer from './components/TasksContainer'
 import TaskForm from './components/TaskForm'
 import Navbar from "./components/Navbar"
+import DateFilters from './components/DateFilters'
 
 const App = () => {
   return (
@@ -13,11 +14,12 @@ const App = () => {
       <AppContextProvider>
         <h1>Mern TODO Front End</h1>
         <Navbar />
-        <Login/>
-        <Signup/>
-        <Logout/>
-        <TaskForm/>
-        <TasksContainer/>
+        <DateFilters />
+        <Login />
+        <Signup />
+        <Logout />
+        <TaskForm />
+        <TasksContainer />
       </AppContextProvider>
     </div>
   );
