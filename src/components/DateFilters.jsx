@@ -9,14 +9,15 @@ const DateFilters = () => {
       dueFilter(query, tasks, setDisplayedTasks)
   }
 
+ const filters = ["Due Soon", "Due Later", "Past Due", "Not Due", "Remove" ]
+ 
   return(
     <div>
       <ul>
-        <li onClick={()=> filterByDate("Due Soon")}>Due Soon</li>
-        <li onClick={()=> filterByDate("Due Later")}>Due Later</li>
-        <li onClick={()=> filterByDate("Past Due")}>Past Due</li>
-        <li onClick={()=> filterByDate("Not Due")}>Not Due</li>
-        <li onClick={()=> filterByDate("Remove")}>Remove Filters</li>
+        {
+          filters.map(filter => (
+            <li onClick={()=> filterByDate(filter)}>{filter}</li>
+        ))}
       </ul>
     </div>
   )
