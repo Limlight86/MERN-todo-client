@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import { AppContext } from "../context/AppContext";
 
 const Signup = () => {
-  const { user, setUser, setLoggedIn } = useContext(AppContext);
+  const { user, setUser, setLoggedIn, history } = useContext(AppContext);
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [name, setName] = useState("")
@@ -31,6 +31,7 @@ const Signup = () => {
       setPassword("")
       setName("")
       localStorage.setItem("token", res.token );
+      history.push("/home");
       })
       .catch(() => console.log('error'))
   }

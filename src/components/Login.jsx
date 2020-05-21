@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import { AppContext } from "../context/AppContext";
 
 const Login = () => {
-  const { setUser, setLoggedIn, setRefetch } = useContext(AppContext);
+  const { setUser, setLoggedIn, setRefetch, history } = useContext(AppContext);
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
 
@@ -30,6 +30,7 @@ const Login = () => {
         setRefetch(true)        
         setEmail("")
         setPassword("")
+        history.push("/");
       })
       .catch(() => console.log('error'))
   }
