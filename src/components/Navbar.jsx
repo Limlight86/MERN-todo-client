@@ -1,9 +1,12 @@
 import React, { useContext } from 'react'
+import { NavLink } from "react-router-dom"
 import { AppContext } from '../context/AppContext';
+import Login from "../components/Login"
+import Logout from "../components/Logout"
 import axios from 'axios'
 
 const Navbar = () => {
-  const { tasks, setDisplayedTasks } = useContext(AppContext)
+  const { tasks, user, setDisplayedTasks, loggedIn } = useContext(AppContext)
 
   const filterTasks = (boolean) => {
     const token = localStorage.getItem("token")
@@ -29,6 +32,17 @@ const Navbar = () => {
           Pending
         </span>
       </div>
+      {
+        ( loggedIn ? <span>{user.name}<Logout /></span> 
+          :
+          <div>
+            <Login/> 
+            <NavLink to="/signup">
+              Sign Up Now
+            </NavLink>
+          </div> 
+        )
+      }
     </nav>
   )
 }
