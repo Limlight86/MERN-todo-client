@@ -16,10 +16,10 @@ const App = () => {
           <h1>Mern TODO Front End</h1>
           <Navbar />
           <Route exact path="/" component={Home}/>
-          <Login />
-          <Signup />
+          <Route path="/signup" component={Signup}/>
+          <Route path="/login" component={Login}/>
+          <Route path="/resetpassword" component={ResetPassword}/>
           <Logout />
-          <ResetPassword />
         </AppContextProvider>
       </BrowserRouter>
     </div>
