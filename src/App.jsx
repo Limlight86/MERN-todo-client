@@ -7,6 +7,7 @@ import TasksContainer from './components/TasksContainer'
 import TaskForm from './components/TaskForm'
 import Navbar from "./components/Navbar"
 import DateFilters from './components/DateFilters'
+import ResetPassword from "./components/ResetPassword"
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
         <Logout />
         <TaskForm />
         <TasksContainer />
+        <ResetPassword />
       </AppContextProvider>
     </div>
   );
