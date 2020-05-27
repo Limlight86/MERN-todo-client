@@ -1,8 +1,11 @@
 import React, { useContext } from 'react';
+import { useHistory } from "react-router-dom"
 import { AppContext } from "../context/AppContext";
 
 const Logout = () => {
   const { setUser, setLoggedIn, setTasks } = useContext(AppContext);
+
+  const history = useHistory()
 
   const logOut = () => {
     const token = localStorage.getItem("token")
@@ -20,6 +23,7 @@ const Logout = () => {
         setUser({})
         setLoggedIn(false)
         setTasks([])
+        history.push("/")
     })
   }
 

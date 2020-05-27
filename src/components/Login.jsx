@@ -1,10 +1,13 @@
 import React, { useState, useContext } from 'react';
+import { useHistory } from "react-router-dom"
 import { AppContext } from "../context/AppContext";
 
 const Login = () => {
-  const { setUser, setLoggedIn, setRefetch, history } = useContext(AppContext);
+  const { setUser, setLoggedIn, setRefetch } = useContext(AppContext);
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
+
+  const history = useHistory()
 
   const logIn = (email, password, e) => {
     e.preventDefault()

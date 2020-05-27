@@ -1,5 +1,4 @@
 import React, { createContext, useState, useEffect, useCallback } from "react";
-import { useHistory } from "react-router-dom";
 import axios from 'axios'
 
 const AppContext = createContext();
@@ -12,8 +11,6 @@ const AppContextProvider = ({ children }) => {
   const [statusFilter, setStatusFilter] = useState(0)
   const [currentFilter, setCurrentFilter] = useState("")
   const [refetch, setRefetch] = useState(false);
-
-  const history = useHistory()
 
   const token = localStorage.getItem("token")
 
@@ -62,7 +59,7 @@ const AppContextProvider = ({ children }) => {
 
   return (
     <AppContext.Provider value={
-      {user, setUser, loggedIn, setLoggedIn, tasks, setTasks, setRefetch, displayedTasks, setDisplayedTasks, history, currentFilter, setCurrentFilter, statusFilter, setStatusFilter, searchTasks}
+      {user, setUser, loggedIn, setLoggedIn, tasks, setTasks, setRefetch, displayedTasks, setDisplayedTasks, currentFilter, setCurrentFilter, statusFilter, setStatusFilter, searchTasks}
     }>
       {children}
     </AppContext.Provider>
