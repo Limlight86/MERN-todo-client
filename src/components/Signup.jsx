@@ -10,6 +10,8 @@ const Signup = () => {
 
   const history = useHistory()
 
+  
+
   const signUp = (email, password, name, e) => {
     e.preventDefault()
     let myHeaders = new Headers()

@@ -12,23 +12,25 @@ const Login = () => {
 
   const logIn = async (email, password, e) => {
     e.preventDefault()
-     const { data } = await axios({
-        method: 'POST',
-        url: `http://localhost:8080/users/login`,
-        data: {
-          email,
-          password
-        }
-      }).catch((e) => console.log(e.message.toString()))
-      console.log(data, "response")
-      setUser(data.user)
-      localStorage.setItem("token", data.token );
-      setLoggedIn(true)
-      setRefetch(true)        
-      setEmail("")
-      setPassword("")
-      history.push("/");
-      setRefetch(true)
+     await axios({
+      method: 'POST',
+      url: `http://localhost:8080/users/login`,
+      data: {
+        email,
+        password
+      }})
+      .then(({data}) =>{
+        console.log(data, "response")
+        setUser(data.user)
+        localStorage.setItem("token", data.token );
+        setLoggedIn(true)
+        setRefetch(true)        
+        setEmail("")
+        setPassword("")
+        history.push("/");
+        setRefetch(true)
+      })
+      .catch((e) => console.log(e.message.toString()))
     }
 
   return(
