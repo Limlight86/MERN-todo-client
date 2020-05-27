@@ -11,7 +11,7 @@ const DeleteTask = props => {
      if (window.confirm("Delete this task?")){
       await axios({
         method: 'DELETE',
-        url: `http://localhost:8080/tasks/${props.id}`,
+        url: `${process.env.REACT_APP_SERVER_URL}/tasks/${props.id}`,
         headers: {Authorization: `Bearer ${token}`} 
       })
       setRefetch(true)

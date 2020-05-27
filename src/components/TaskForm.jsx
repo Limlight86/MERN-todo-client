@@ -14,7 +14,7 @@ const TaskForm = () => {
     const token = localStorage.getItem("token")
     await axios({
       method: 'POST',
-      url: `http://localhost:8080/tasks`,
+      url: `${process.env.REACT_APP_SERVER_URL}/tasks`,
       headers: {Authorization: `Bearer ${token}`}, 
       data: {
         description: taskDescription,

@@ -11,7 +11,7 @@ const Navbar = () => {
 
   const filterTasks = (boolean) => {
     const token = localStorage.getItem("token")
-    axios.get(`http://localhost:8080/tasks?completed=${boolean}`,{headers: {Authorization: `Bearer ${token}`}})
+    axios.get(`${process.env.REACT_APP_SERVER_URL}/tasks?completed=${boolean}`,{headers: {Authorization: `Bearer ${token}`}})
     .then(({ data }) => {
       console.log(data)
       setDisplayedTasks(data)
