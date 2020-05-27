@@ -49,9 +49,20 @@ const AppContextProvider = ({ children }) => {
       }
     }, [loggedIn, fetchTasks, token, refetch])
 
+    const searchTasks = (term) => {
+      let searchedTasks = tasks.filter(task => {
+        return(
+          task.description.includes(term)
+        )
+      })
+      setStatusFilter(0)
+      setCurrentFilter("")
+      setDisplayedTasks(searchedTasks)
+    }
+
   return (
     <AppContext.Provider value={
-      {user, setUser, loggedIn, setLoggedIn, tasks, setTasks, setRefetch, displayedTasks, setDisplayedTasks, history, currentFilter, setCurrentFilter, statusFilter, setStatusFilter}
+      {user, setUser, loggedIn, setLoggedIn, tasks, setTasks, setRefetch, displayedTasks, setDisplayedTasks, history, currentFilter, setCurrentFilter, statusFilter, setStatusFilter, searchTasks}
     }>
       {children}
     </AppContext.Provider>
