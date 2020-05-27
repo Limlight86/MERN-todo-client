@@ -21,7 +21,9 @@ const AppContextProvider = ({ children }) => {
       setTasks(data)
       setDisplayedTasks(data)
       setRefetch(false)
-    })}, [token])
+    })
+    .catch((e) => console.log(e.message.toString()))
+  }, [token])
 
     useEffect(()=>{
       setRefetch(true)
@@ -29,16 +31,14 @@ const AppContextProvider = ({ children }) => {
 
   useEffect(()=>{
     if (token){
-      fetch("http://localhost:8080/users/me", {
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
+      axios.get("http://localhost:8080/users/me", {headers: {Authorization: `Bearer ${token}`}
       })
-      .then(data => data.json())
-      .then(res => {
-        setUser(res)
+      .then(({data}) => {
+        setUser(data)
         setLoggedIn(true)
-    })}}, [token])
+      })
+      .catch((e) => console.log(e.message.toString()))
+    }}, [token])
 
     useEffect(()=>{
       if(token){
