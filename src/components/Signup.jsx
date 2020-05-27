@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react';
 import {Link, useHistory} from "react-router-dom"
 import { AppContext } from "../context/AppContext";
+import axios from "axios"
 
 const Signup = () => {
   const { setUser, setLoggedIn } = useContext(AppContext);
@@ -10,35 +11,27 @@ const Signup = () => {
 
   const history = useHistory()
 
-  
-
-  const signUp = (email, password, name, e) => {
+  const signUp = async (email, password, name, e) => {
     e.preventDefault()
-    let myHeaders = new Headers()
-    myHeaders.append('Content-Type', 'application/json')
-
-    let raw = JSON.stringify({ email, password, name })
-
-    let requestOptions = {
+    await axios({
       method: 'POST',
-      headers: myHeaders,
-      body: raw,
-      redirect: 'follow',
-    }
-
-    fetch(`http://localhost:8080/users`, requestOptions)
-    .then(data => data.json())
-    .then(res => {
-      console.log(res, "response")
-      setUser(res.user)
+      url: `http://localhost:8080/users`,
+      data: {
+        email,
+        password,
+        name
+    }})
+    .then(({ data }) => {
+      console.log(data, "response")
+      setUser(data.user)
       setLoggedIn(true)
       setEmail("")
       setPassword("")
       setName("")
-      localStorage.setItem("token", res.token );
+      localStorage.setItem("token", data.token );
       history.push("/");
       })
-      .catch((e) => console.log(e.message))
+      .catch((e) => console.log(e.message.toString()))
   }
 
   return(
