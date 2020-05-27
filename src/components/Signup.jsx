@@ -1,4 +1,5 @@
 import React, { useState, useContext } from 'react';
+import {Link} from "react-router-dom"
 import { AppContext } from "../context/AppContext";
 
 const Signup = () => {
@@ -37,37 +38,42 @@ const Signup = () => {
   }
 
   return(
-    <form onSubmit={e => signUp(email, password, name, e)}>
-        <h1>Sign Up Below!</h1>
-        <input
-          type="email"
-          name="email"
-          placeholder="Enter email"
-          value={email}
-          onChange={ e => setEmail(e.target.value) }
-          required
-        />
-        <input
-          type="password"
-          name="password"
-          placeholder="Enter password"
-          value={password}
-          onChange={e => setPassword(e.target.value)}
-          required
-        />
-        <input
-          type="name"
-          name="name"
-          placeholder="Enter name"
-          value={name}
-          onChange={e => setName(e.target.value)}
-          required
-        />
-        <input type="submit" value="Sign Up"/>
-        {
-        user.name && <h1>{user.name}</h1>
-      }
-      </form>
+    <div>
+      <form onSubmit={e => signUp(email, password, name, e)}>
+          <h1>Sign Up Below!</h1>
+          <input
+            type="email"
+            name="email"
+            placeholder="Enter email"
+            value={email}
+            onChange={ e => setEmail(e.target.value) }
+            required
+          />
+          <input
+            type="password"
+            name="password"
+            placeholder="Enter password"
+            value={password}
+            onChange={e => setPassword(e.target.value)}
+            required
+          />
+          <input
+            type="name"
+            name="name"
+            placeholder="Enter name"
+            value={name}
+            onChange={e => setName(e.target.value)}
+            required
+          />
+          <input type="submit" value="Sign Up"/>
+          {
+          user.name && <h1>{user.name}</h1>
+        }
+        </form>
+        <Link to="/">
+          Return to Home Page
+        </Link>
+      </div>
   )
 }
 

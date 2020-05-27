@@ -19,7 +19,7 @@ const DeleteTask = props => {
   }
 
 return(
-  <button onClick={handleDelete}>
+  <button className="btn btn-danger btn-sm" onClick={handleDelete}>
     Delete Task
   </button>
 )

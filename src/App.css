@@ -1,0 +1,13 @@
+.badge-lg{
+  font-size: large;
+}
+
+.badge-sm{
+  font-size: small;
+}
+
+.badge{
+  transition: all 0.1s;
+  cursor: pointer;
+  margin: 0 2px;
+}

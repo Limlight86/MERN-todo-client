@@ -1,4 +1,5 @@
 import React, {useContext} from "react"
+import { Link } from "react-router-dom"
 import { AppContext } from '../context/AppContext';
 import DateFilters from "../components/DateFilters"
 import TaskForm from "../components/TaskForm"
@@ -13,13 +14,15 @@ const Home = () => {
       {
         loggedIn ? ( 
         <div>
-          <TaskForm />
           <TasksContainer />
+          <TaskForm />
         </div>) 
         :
-        <h1>Log in to manage your Todos!</h1>
+        <div>
+          <h1>Log in to manage your Todos!</h1>
+          <Link to="/signup">Sign Up Now</Link>
+        </div>
       }
-      
     </div>
   )
 }

@@ -9,6 +9,8 @@ const AppContextProvider = ({ children }) => {
   const [loggedIn, setLoggedIn] = useState(false)
   const [tasks, setTasks] = useState([])
   const [displayedTasks, setDisplayedTasks] = useState([])
+  const [statusFilter, setStatusFilter] = useState(0)
+  const [currentFilter, setCurrentFilter] = useState("")
   const [refetch, setRefetch] = useState(false);
 
   const history = useHistory()
@@ -16,7 +18,7 @@ const AppContextProvider = ({ children }) => {
   const token = localStorage.getItem("token")
 
   const fetchTasks = useCallback(() => {
-    axios.get(`http://localhost:8080/tasks`,{headers: {Authorization: `Bearer ${token}`}})
+    axios.get(`http://localhost:8080/tasks?sortBy=dueDate:asc`,{headers: {Authorization: `Bearer ${token}`}})
     .then(({ data }) => {
       console.log(data)
       setTasks(data)
@@ -49,7 +51,7 @@ const AppContextProvider = ({ children }) => {
 
   return (
     <AppContext.Provider value={
-      {user, setUser, loggedIn, setLoggedIn, tasks, setTasks, setRefetch, displayedTasks, setDisplayedTasks, history}
+      {user, setUser, loggedIn, setLoggedIn, tasks, setTasks, setRefetch, displayedTasks, setDisplayedTasks, history, currentFilter, setCurrentFilter, statusFilter, setStatusFilter}
     }>
       {children}
     </AppContext.Provider>
