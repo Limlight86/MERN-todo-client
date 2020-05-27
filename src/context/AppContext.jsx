@@ -55,6 +55,8 @@ const AppContextProvider = ({ children }) => {
           task.description.includes(term)
         )
       })
+      setStatusFilter(0)
+      setCurrentFilter("")
       setDisplayedTasks(searchedTasks)
     }
 

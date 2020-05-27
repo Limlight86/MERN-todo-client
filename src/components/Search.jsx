@@ -1,7 +1,7 @@
 import React, { useContext } from "react"
 import { AppContext } from '../context/AppContext';
 
-const Search = (e) => {
+const Search = () => {
   const {searchTasks} = useContext(AppContext)
 
   return(
