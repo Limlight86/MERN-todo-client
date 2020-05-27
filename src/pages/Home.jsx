@@ -5,16 +5,18 @@ import DateFilters from "../components/DateFilters"
 import TaskForm from "../components/TaskForm"
 import TasksContainer from "../components/TasksContainer"
 import Search from "../components/Search"
+import ErrorMessage from  "../components/ErrorMessage"
 
 const Home = () => {
-  const { loggedIn } = useContext(AppContext)
+  const { loggedIn, errorMessage } = useContext(AppContext)
 
   return(
     <div>
-      <DateFilters />
+      { errorMessage ? <ErrorMessage /> : null }
       {
         loggedIn ? ( 
         <div>
+          <DateFilters />
           <Search />
           <TasksContainer />
           <TaskForm />
