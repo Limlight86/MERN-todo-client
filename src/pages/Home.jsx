@@ -4,6 +4,7 @@ import { AppContext } from '../context/AppContext';
 import DateFilters from "../components/DateFilters"
 import TaskForm from "../components/TaskForm"
 import TasksContainer from "../components/TasksContainer"
+import Search from "../components/Search"
 
 const Home = () => {
   const { loggedIn } = useContext(AppContext)
@@ -14,6 +15,7 @@ const Home = () => {
       {
         loggedIn ? ( 
         <div>
+          <Search />
           <TasksContainer />
           <TaskForm />
         </div>) 
