@@ -4,7 +4,7 @@ import { AppContext } from "../context/AppContext";
 import axios from 'axios'
 
 const Logout = () => {
-  const { setUser, setLoggedIn, setTasks } = useContext(AppContext);
+  const { setUser, setLoggedIn, setTasks, setDisplayedTasks } = useContext(AppContext);
 
   const history = useHistory()
 
@@ -21,6 +21,7 @@ const Logout = () => {
       setUser({})
       setLoggedIn(false)
       setTasks([])
+      setDisplayedTasks([])
       history.push("/")
     })
     .catch((e) => console.log(e.message.toString()))
