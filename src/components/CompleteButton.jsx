@@ -20,7 +20,7 @@ const CompleteButton = props => {
   }
 
 return(
-  <button onClick={toggleComplete}>
+  <button className="btn btn-secondary btn-sm" onClick={toggleComplete}>
     {props.completed ? "Mark Incomplete" : "Mark Complete" }
   </button>
 )

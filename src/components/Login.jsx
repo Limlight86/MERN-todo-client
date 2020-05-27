@@ -37,7 +37,6 @@ const Login = () => {
 
   return(
     <form onSubmit={e => logIn(email, password, e)}>
-        <h1>Login Below!</h1>
         <input
           type="email"
           name="email"
@@ -54,7 +53,7 @@ const Login = () => {
           onChange={e => setPassword(e.target.value)}
           required
         />
-        <input type="submit" value="Log In"/>
+        <button type="submit" className="btn-sm btn-primary actions">Log In</button>
       </form>
 
   )

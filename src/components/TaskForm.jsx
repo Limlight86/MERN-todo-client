@@ -19,7 +19,7 @@ const TaskForm = () => {
       data: {
         description: taskDescription,
         completed: false,
-        dueDate: dueDate
+        dueDate: `${dueDate} `
       }
     })
     setRefetch(true)
@@ -28,23 +28,33 @@ const TaskForm = () => {
   }
 
   return(
-    <form onSubmit={e => addTask(e)}>
-      <input
-          type="text"
-          name="task-description"
-          placeholder="Enter a task"
-          value={taskDescription}
-          onChange={ e => setTaskDescription(e.target.value) }
-          required
-        />
-        <input
-          type="date"
-          name="due-date"
-          value={dueDate}
-          onChange={ e => setDueDate(e.target.value) }
-        />
-        <input type="submit" value="Add Task"/>
-    </form>
+      <form style={{marginBottom:"16px"}} onSubmit={e => addTask(e)}>
+        <div className="form-group">
+          <label htmlFor="task-description">Description</label>
+          <input
+              className="form-control col-md-8"
+              type="text"
+              id="task-description"
+              name="task-description"
+              placeholder="Enter a task"
+              value={taskDescription}
+              onChange={ e => setTaskDescription(e.target.value) }
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="due-date">Due date</label>
+            <input
+              className="form-control col-md-4"
+              type="date"
+              id="due-date"
+              name="due-date"
+              value={dueDate}
+              onChange={ e => setDueDate(e.target.value) }
+            />
+          </div>
+          <button className="btn btn-primary actions" type="submit">Add Task</button>
+      </form>
   )
 }
 
