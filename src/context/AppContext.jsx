@@ -15,7 +15,7 @@ const AppContextProvider = ({ children }) => {
   const token = localStorage.getItem("token")
 
   const fetchTasks = useCallback(() => {
-    axios.get(`http://localhost:8080/tasks?sortBy=dueDate:asc`,{headers: {Authorization: `Bearer ${token}`}})
+    axios.get(`${process.env.REACT_APP_SERVER_URL}/tasks?sortBy=dueDate:asc`,{headers: {Authorization: `Bearer ${token}`}})
     .then(({ data }) => {
       console.log(data)
       setTasks(data)
@@ -31,7 +31,7 @@ const AppContextProvider = ({ children }) => {
 
   useEffect(()=>{
     if (token){
-      axios.get("http://localhost:8080/users/me", {headers: {Authorization: `Bearer ${token}`}
+      axios.get(`${process.env.REACT_APP_SERVER_URL}/users/me`, {headers: {Authorization: `Bearer ${token}`}
       })
       .then(({data}) => {
         setUser(data)

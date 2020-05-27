@@ -15,7 +15,7 @@ const Signup = () => {
     e.preventDefault()
     await axios({
       method: 'POST',
-      url: `http://localhost:8080/users`,
+      url: `${process.env.REACT_APP_SERVER_URL}/users`,
       data: {
         email,
         password,

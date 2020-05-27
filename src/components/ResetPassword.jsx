@@ -9,7 +9,7 @@ const ResetPassword = () => {
     e.preventDefault()
     console.log("am i working?")
     try{
-      await axios.get(`http://localhost:8080/users/password/forgot?email=${email}&password=${password}`)
+      await axios.get(`${process.env.REACT_APP_SERVER_URL}/users/password/forgot?email=${email}&password=${password}`)
     } catch(e){
        console.log(e.toString())
     }}

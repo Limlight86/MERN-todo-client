@@ -10,7 +10,7 @@ const CompleteButton = props => {
     const token = localStorage.getItem("token")
     await axios({
       method: 'PATCH',
-      url: `http://localhost:8080/tasks/${props.id}`,
+      url: `${process.env.REACT_APP_SERVER_URL}/tasks/${props.id}`,
       headers: {Authorization: `Bearer ${token}`}, 
       data: {
         completed: !props.completed
