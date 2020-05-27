@@ -4,7 +4,7 @@ import { AppContext } from "../context/AppContext";
 import axios from 'axios'
 
 const Login = () => {
-  const { setUser, setLoggedIn, setRefetch } = useContext(AppContext);
+  const { setUser, setLoggedIn, setRefetch, setErrorMessage } = useContext(AppContext);
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
 
@@ -30,7 +30,10 @@ const Login = () => {
         history.push("/");
         setRefetch(true)
       })
-      .catch((e) => console.log(e.message.toString()))
+      .catch((e) =>{
+        console.log(e.message.toString(), "Credentials Error")
+        setErrorMessage("Credentials error, try again.")
+      }) 
     }
 
   return(
