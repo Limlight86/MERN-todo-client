@@ -1,30 +1,29 @@
 import React, { useContext } from 'react';
 import { useHistory } from "react-router-dom"
 import { AppContext } from "../context/AppContext";
+import axios from 'axios'
 
 const Logout = () => {
   const { setUser, setLoggedIn, setTasks } = useContext(AppContext);
 
   const history = useHistory()
 
-  const logOut = () => {
+  const logOut = async () => {
     const token = localStorage.getItem("token")
-    let myHeaders = {Authorization: `Bearer ${token}`}
-    let requestOptions = {
+    await axios({
       method: 'POST',
-      headers: myHeaders,
-      redirect: 'follow',
-    }
-    fetch("http://localhost:8080/users/logout", requestOptions)
-      .then(data => data.json())
-      .then(res => {
-        console.log(res, "response")
-        localStorage.removeItem("token");
-        setUser({})
-        setLoggedIn(false)
-        setTasks([])
-        history.push("/")
+      url: `http://localhost:8080/users/logout`,
+      headers: {Authorization: `Bearer ${token}`},
     })
+    .then(({ data }) => {
+      console.log(data, "response")
+      localStorage.removeItem("token");
+      setUser({})
+      setLoggedIn(false)
+      setTasks([])
+      history.push("/")
+    })
+    .catch((e) => console.log(e.message.toString()))
   }
 
   return(

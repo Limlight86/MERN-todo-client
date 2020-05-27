@@ -20,7 +20,8 @@ const Signup = () => {
         email,
         password,
         name
-    }})
+      }
+    })
     .then(({ data }) => {
       console.log(data, "response")
       setUser(data.user)
