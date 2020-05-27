@@ -11,6 +11,7 @@ const AppContextProvider = ({ children }) => {
   const [statusFilter, setStatusFilter] = useState(0)
   const [currentFilter, setCurrentFilter] = useState("")
   const [refetch, setRefetch] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("")
 
   const token = localStorage.getItem("token")
 
@@ -59,7 +60,23 @@ const AppContextProvider = ({ children }) => {
 
   return (
     <AppContext.Provider value={
-      {user, setUser, loggedIn, setLoggedIn, tasks, setTasks, setRefetch, displayedTasks, setDisplayedTasks, currentFilter, setCurrentFilter, statusFilter, setStatusFilter, searchTasks}
+      { user, 
+        setUser, 
+        loggedIn, 
+        setLoggedIn, 
+        tasks, 
+        setTasks, 
+        setRefetch, 
+        displayedTasks, 
+        setDisplayedTasks, 
+        currentFilter, 
+        setCurrentFilter, 
+        statusFilter, 
+        setStatusFilter, 
+        searchTasks,
+        errorMessage, 
+        setErrorMessage
+      }
     }>
       {children}
     </AppContext.Provider>
