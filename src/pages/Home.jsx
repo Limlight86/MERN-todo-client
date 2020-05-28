@@ -24,7 +24,10 @@ const Home = () => {
         :
         <div>
           <h1>Log in to manage your Todos!</h1>
-          <Link to="/signup">Sign Up Now</Link>
+          <div style={{display:"flex", flexDirection:"column"}}>
+            <Link to="/signup">Sign Up Now</Link>
+            <Link to="/resetpassword">Forgot Password?</Link>
+          </div>
         </div>
       }
     </div>
