@@ -63,6 +63,9 @@ const Navbar = () => {
             <Link to="/signup" style={{marginLeft:"8px"}}>
               Sign Up Now
             </Link>
+            <Link to="/resetpassword" style={{marginLeft:"8px"}}>
+              Forgot Password?
+            </Link>
           </div> 
         )
       }
