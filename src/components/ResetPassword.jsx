@@ -33,6 +33,7 @@ const ResetPassword = () => {
             value={email}
             onChange={ e => setEmail(e.target.value) }
             required
+            className="form-control"
           />
         </div>
         <div className="form-group">
@@ -45,6 +46,7 @@ const ResetPassword = () => {
             value={password}
             onChange={ e => setPassword(e.target.value) }
             required
+            className="form-control"
           />
         </div>
         <button type="submit" className="btn btn-primary actions">Reset Password</button>
