@@ -25,9 +25,9 @@ const Signup = () => {
       .then(({ data }) => {
         console.log(data, 'response');
         setUser(data.user);
-        setLoggedIn(true);
         setEmail('');
         setPassword('');
+        setLoggedIn(true);
         setName('');
         localStorage.setItem('token', data.token);
         history.push('/');
