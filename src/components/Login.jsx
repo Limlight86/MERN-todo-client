@@ -23,10 +23,10 @@ const Login = () => {
         console.log(data, "response")
         setUser(data.user)
         localStorage.setItem("token", data.token );
-        setLoggedIn(true)
-        setRefetch(true)        
         setEmail("")
         setPassword("")
+        setLoggedIn(true)
+        setRefetch(true)        
         history.push("/");
         setRefetch(true)
       })
