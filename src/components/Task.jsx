@@ -1,9 +1,24 @@
-import React from 'react'
+import React, {useContext, useEffect} from 'react'
+import {AppContext} from "../context/AppContext"
 import moment from 'moment'
 import CompleteButton from '../components/CompleteButton'
 import DeleteTask from '../components/DeleteTask'
 
-const Task = props => (
+const Task = props => {
+  const {setErrorMessage, loggedIn} = useContext(AppContext)
+
+  useEffect(()=>{
+    console.log(`Task ${props.id} has mounted!`)
+    return(()=>{
+      if(loggedIn){
+        console.log(`Task ${props.id} has un-mounted!`)
+        setErrorMessage(`Task ${props.id} has been deleted!`)
+      }
+      
+    })
+  },[])
+
+  return(
   <tr>
     <td style={{wordBreak:"break-word"}}>
       {
@@ -18,6 +33,7 @@ const Task = props => (
       <DeleteTask id={props.id} />
     </td>
   </tr>
-)
+  )
+}
 
 export default Task
