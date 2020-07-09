@@ -3,7 +3,7 @@
 ## Setup
 
 ### API
-- `git clone git@github.com:wyncode/todo-mern-api.git`
+- `git clone https://github.com/Limlight86/MERN-todo-api.git`
 - `cd todo-mern-api`
 - `yarn`
 - `cp sample.env .env`
