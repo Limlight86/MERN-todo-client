@@ -4,7 +4,7 @@ import { AppContext } from "../context/AppContext";
 
 
 const DeleteTask = props => {
-  const { setRefetch } = useContext(AppContext)
+  const { setRefetch, setErrorMessage } = useContext(AppContext)
 
   const handleDelete = async () =>{
     const token = localStorage.getItem("token")
@@ -15,6 +15,7 @@ const DeleteTask = props => {
         headers: {Authorization: `Bearer ${token}`} 
       })
       setRefetch(true)
+      setErrorMessage(`Task ${props.id} has been deleted!`)
      }  
   }
 

@@ -5,18 +5,17 @@ import CompleteButton from '../components/CompleteButton'
 import DeleteTask from '../components/DeleteTask'
 
 const Task = props => {
-  const {setErrorMessage, loggedIn} = useContext(AppContext)
+  const {loggedIn} = useContext(AppContext)
 
   useEffect(()=>{
     console.log(`Task ${props.id} has mounted!`)
     return(()=>{
       if(loggedIn){
-        console.log(`Task ${props.id} has un-mounted!`)
-        setErrorMessage(`Task ${props.id} has been deleted!`)
+        console.log(`Task ${props.id} has un-mounted!`)        
       }
       
     })
-  },[])
+  },[loggedIn, props.id])
 
   return(
   <tr>
