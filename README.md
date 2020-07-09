@@ -11,7 +11,7 @@
 - `yarn dev`
 
 ### Client
-- `git clone git@github.com:wyncode/todo-mern-client.git`
+- `git clone https://github.com/Limlight86/MERN-todo-client`
 - `cd todo-mern-client`
 - `yarn`
 - `cp sample.env .env`
